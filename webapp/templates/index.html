@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Audio Extraction App</title>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center text-center mt-5">
+            <h1 class="mb-2">AUDIO EXTRACTION APP</h1>
+            <hr>
+            <form action="/process" method="post" class="mt-2" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" name="audio" id="audio">
+                </div>
+                <form>
+                    <div class="form-group row mt-2">
+                      <label for="frameLength" class="col-sm-2 col-form-label">Masukkan panjang frame</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="frameLength" name="frameLength">
+                      </div>
+                    </div>
+                    <div class="form-group row mt-2">
+                      <label for="frameShift" class="col-sm-2 col-form-label">Masukkan jumlah pergeseran frame:</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="frameShift" name="frameShift">
+                      </div>
+                    </div>
+                    <div class="form-group row mt-2">
+                      <label for="numMelBins" class="col-sm-2 col-form-label">Masukkan MEL Filter:</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="numMelBins" name="numMelBins">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-3">Proses</button>
+                  </form>
+            </form>
+            <hr>
+            <hr>
+            <div class="result">
+                <!-- <p>{{up_audio_path}}</p> -->
+                MFCCs: <br>
+                  <table>
+                    {% for x in range(mfcc|length)%}
+                    <tr>
+                      {% for y in range(mfcc[x]|length)%}
+                      <td>
+                        {{mfcc[x][y] | safe}}
+                      </td>
+                      {% endfor %}
+                    </tr>
+                    {% endfor %}
+                  </table>
+                  <!-- {{mfcc|safe}} -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

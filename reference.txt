@@ -1,0 +1,7 @@
+https://stackoverflow.com/questions/66887965/python-audio-segmentation-with-overlapping-and-hamming-windows
+https://opensource.com/article/19/9/audio-processing-machine-learning-python
+https://stackoverflow.com/questions/62584184/understanding-the-shape-of-spectrograms-and-n-mels
+https://haythamfayek.com/2016/04/21/speech-processing-for-machine-learning.html
+https://blog.paperspace.com/introduction-to-audio-analysis-and-synthesis/
+https://stackoverflow.com/questions/58824516/librosa-cannot-provide-window-function-for-mfcc-on-windows
+https://stackoverflow.com/questions/53548127/post-numpy-array-with-json-to-flask-app-with-requests
