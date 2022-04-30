@@ -18,30 +18,29 @@
                 </div>
                 <form>
                     <div class="form-group row mt-2">
-                      <label for="frameLength" class="col-sm-2 col-form-label">Masukkan panjang frame</label>
+                      <label for="frameLength" class="col-sm-2 col-form-label">Frame Length:</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="frameLength" name="frameLength">
+                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="frameLength" name="frameLength" required min=0>
                       </div>
                     </div>
                     <div class="form-group row mt-2">
-                      <label for="frameShift" class="col-sm-2 col-form-label">Masukkan jumlah pergeseran frame:</label>
+                      <label for="frameShift" class="col-sm-2 col-form-label">Frame Shift:</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="frameShift" name="frameShift">
+                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="frameShift" name="frameShift" required min=0>
                       </div>
                     </div>
                     <div class="form-group row mt-2">
-                      <label for="numMelBins" class="col-sm-2 col-form-label">Masukkan MEL Filter:</label>
+                      <label for="numMelBins" class="col-sm-2 col-form-label">Number of Mel Bins:</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="numMelBins" name="numMelBins">
+                        <input type="number" class="form-control-plaintext ps-2 border border-dark" id="numMelBins" name="numMelBins" required min=0>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-dark mt-3">Proses</button>
+                    <button type="submit" class="btn btn-dark mt-3">Process</button>
                   </form>
             </form>
             <hr>
             <hr>
             <div class="result">
-                <!-- <p>{{up_audio_path}}</p> -->
                 MFCCs: <br>
                   <table>
                     {% for x in range(mfcc|length)%}
@@ -54,7 +53,6 @@
                     </tr>
                     {% endfor %}
                   </table>
-                  <!-- {{mfcc|safe}} -->
             </div>
         </div>
     </div>

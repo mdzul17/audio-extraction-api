@@ -1,12 +1,8 @@
-
 from flask import Flask, request, render_template
-from flask_uploads import configure_uploads
 import os
 import librosa
 import json
 import numpy as np
-import sys
-import logging
 
 app = Flask(__name__)
 datatest = os.path.join('static', 'datatest')
@@ -97,7 +93,6 @@ def upload():
                 samples_per_frame, hop_length = windowing.frame_n_hop()
         elif input_frame_length != 0 and input_frame_shift != 0:
             samples_per_frame, hop_length = windowing.frame_n_hop(frame_length=input_frame_length,frame_shift=input_frame_shift)
-            logging.info(samples_per_frame, hop_length)
 
         if input_num_mel_bins == 0:
             mel_filter_banks = windowing.mel_filter()
@@ -108,14 +103,13 @@ def upload():
             melspectogram = windowing.mel_spectogram(signal, hop_length=int(round(hop_length)), samples_per_frame=int(round(samples_per_frame)),mel_filter_args=mel_filter_banks)
             mfccs = extraction.extract(signal, mel_spectogram=melspectogram)
 
-        #Store it to JSON Format
+        #Store it to JSON Format as if needed in the future
         mfcc_dict = {}
         mfcc_dict['matrix'] = mfccs.transpose().tolist()
 
         json.dumps(mfcc_dict)
         
-        mfccs = mfccs.transpose()
-
+        mfccs = mfccs.transpose() #transpose mfccs result to get N_Frames x cepstual coefficient matrix dimension
     return render_template("index.html", mfcc=mfccs)
 
 if __name__ == '__main__':
@@ -123,4 +117,4 @@ if __name__ == '__main__':
     windowing = Windowing()
     extraction = Extraction()
 
-    app.run(debug=True)
+    app.run()
